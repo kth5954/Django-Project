@@ -1,0 +1,35 @@
+북마크 앱 코딩 순서
+1. 애플리케이션 설계
+2. 뼈대(프로젝트 생성, 프로젝트 설정 파일 변경, 기본 테이블 생성, 슈퍼유저 생성, 애플리케이션 생성, 애플리케이션 등록)
+3. Model(테이블 정의, admin 사이트에 테이블 반영, 데이터베이스에 변경사항 반영, 테이블 모습 확인)
+4. URLconf
+5. View
+6. Template(bookmark_list.html 템플릿 작성, bookmark_detail.html 템플릿 작성)
+7. 지금까지의 작업 확인(Admin에서 데이터 입력, 브라우저로 확인)
+
+Django Field type
+Primary Key : AutoField, BigAutoField
+문자열 : CharField, TextField, SlugField
+날짜/시간 : DateField, TimeField, DateTimeField, DurationField
+참/거짓 : BooleanField, NullBooleanField
+숫자 : IntegerField, SmallIntegerField, PostiveIntegerField, PostiveSmallIntegerField, BigIntegerField, DecimalField, FloatField
+파일 : BinaryField, FileField, ImageField, FilePathField
+이메일 : EmailField
+URL : URLField
+UUID : UUIDField
+아이피 : GenericIPAddressField
+Relationship Types (ForeignKey, ManyToManyField, OneToOneField)
+필드 옵션
+blank : validation시에 empty 허용 (기본값 : False)
+null : null 허용 여부 (False)
+db_index : 인덱스 필드 여부 (False)
+default : 디폴드 값 지정, 혹은 리턴해줄 함수 지정
+unique : 현재 테이블 내 유일성 여부 (False)
+choices : select 박스 사용시 사용
+validators : validators를 수행할 함수를 다수 지정
+verbose_name : 필드 레이블, 미지정시 필드명 사용
+help_text : 필드 입력 도움말 기능
+
+
+
+

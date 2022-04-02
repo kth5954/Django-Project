@@ -1,0 +1,19 @@
+<h1>Post Archive for {{ year|date: "Y": }}</h1>  <!-- year 컨텍스트 변수는 해당 연도에 대한 datetime.date 타입의 객체 -->
+
+<ul>  <!-- 순서없는 리스트 -->
+    {% for date in date_list %}
+    <li style="display: inline";>  <!-- li style을 inline으로 지정 -->
+        <a href="{% url 'blog:post_month_archive' year|date:'Y' date|date: 'b' %}">
+            {{ date|date:"F" }}</a></li>
+    {% endfor %}
+</ul>
+<br>
+
+<div>
+    <ul>
+        {% for post in object_list %}
+        <li>{{ post.modify_dt|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;
+        <a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a></li>
+        {%  endfor %}
+    </ul>
+</div>

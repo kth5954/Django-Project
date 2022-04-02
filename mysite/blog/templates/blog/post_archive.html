@@ -1,0 +1,20 @@
+<h1>Post Archives until {% now "N d Y" %}</h1> <!-- now는 현재시간을 원하는 포멧으로 출력-->
+<ul> <!-- unordered list, 순서없는 리스트-->
+    {% for date in date_list %}
+    <!-- date_list Context Variable은 DateQuerySet 객체 리스트(객체의 날짜 정보만을 추출)를 담고있음 -->
+    <li style="display: inline;"> <!-- 한줄에 보여주는 태그 -->
+        <a href="{% url 'blog:post_year_archive' date|date:'Y' %}">Year{{date|date:"Y" }}</a></li>
+    {% endfor %}
+</ul>
+<br>
+
+<div>
+    <ul>
+        {% for post in object_list %} <!-- Default context Variable, latest도 가능 -->
+        <li>{{ post.modify_dt|date:"Y-m-d" }}&nbsp;&nbsp;&nbsp;
+        <a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a></li>
+        <!-- strong 태그는 볼드체 표시 -->
+        {% endfor %}
+    </ul>
+</div>
+

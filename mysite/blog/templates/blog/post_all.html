@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+        <title>Title</title>
+    </head>
+<body>
+    <h1>MOODY</h1>
+
+    {% for post in posts %}
+        <div>
+            <button class="title" onclick="location.href='{{ post.get_absolute_url }}'">{{post.title}}</button>
+            <br>
+        {{ post.modify_dt|date:"N d, Y" }}  
+        <p>{{ post.description }}</p>  <!-- description 속성값 출력 -->
+        </div>
+        {% endfor %}
+    <br> 
+    <div class="contents">  <!-- 컨텐츠 분할 요소 -->
+        <span>  <!-- span 태그 내의 줄은 같은 줄에 배치, 페이징 기능을 위한 줄 -->
+            {% if page_obj.has_previous %}
+            <!-- 장고의 page 객체가 들어있는 context variable, 현재 페이지 기준 이전 페이지 있는지 확인 -->
+                <a href="?page={{ page_obj.previous_page_number }}">PreviousPage</a>
+                <!-- page_obj.previous_page_number=이전 페이지 번호, PreviousPage에 url 연결 -->
+            {% endif %}
+
+            Page {{ page.obj.number }} of {{ page_obj.paginator.num_pages }}
+            <!-- page_obj.number=현재 페이지 번호, page_obj.paginator.num_pages=총 페이지 개수 -->
+            {% if page_obj.has_text %}
+                <a href="?page={{ page_obj.next_page_number }}">NextPage</a>
+            <!-- page_obj.next_page_number=다음 페이지 번호, NextPage에 url 연결 -->
+            {% endif %}
+    </div>
+
+
+</body>
+</html>
